@@ -4,6 +4,7 @@ This is a list of functions that should be completed.
 
 from typing import Any
 from typing import List
+import string
 
 
 class OurAwesomeException(Exception):
@@ -60,7 +61,7 @@ def multiple_ints(first_value: int, second_value: int) -> int:
     if first_value or second_value is not int:
         raise ValueError
     else:
-        return first_value + second_value
+        return first_value * second_value
 
 
 def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
@@ -90,7 +91,11 @@ def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
             print("Not valid input data")
         >>> "Not valid input data"
     """
-    pass
+    try:
+        new_int = int(first_value)*int(second_value)
+        return new_int
+    except ValueError:
+        print("This is an ValueError")
 
 
 def is_word_in_text(word: str, text: str) -> bool:
@@ -120,12 +125,10 @@ def some_loop_exercise() -> list:
     Use loop to create list that contain int values from 0 to 12 except 6 and 7
     """
     my_list = []
-    for i in range(12):
+    for i in range(11):
         if i != 6 or 7:
             my_list.append(i)
             return my_list
-        else:
-            return False
 
 
 def remove_from_list_all_negative_numbers(data: List[int]) -> list:
@@ -154,7 +157,8 @@ def alphabet() -> dict:
         alphabet()
         >>> {"a": 1, "b": 2 ...}
     """
-    pass
+    d = dict.fromkeys(string.ascii_lowercase, 0)
+    return d
 
 
 def simple_sort(data: List[int]) -> List[list]:
@@ -166,7 +170,7 @@ def simple_sort(data: List[int]) -> List[list]:
     Returns:
 
     """
-    value=None
+    value = None
     for i in range(data):
         if data[i] > data[i+1]:
             value = data[i]
