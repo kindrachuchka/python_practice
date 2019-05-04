@@ -114,9 +114,9 @@ def some_loop_exercise() -> list:
     """
     my_list = []
     for i in range(11):
-        if i != 6 or i != 7:
+        if i != 6 and i != 7:
             my_list.append(i)
-            return my_list
+    return my_list
 
 
 def remove_from_list_all_negative_numbers(data: List[int]) -> list:
@@ -161,7 +161,3 @@ def simple_sort(data: List[int]) -> List[list]:
             if data[i] > data[j]:
                 data[i], data[j] = data[j], data[i]
     return data
-
-
-if __name__ == "__main__":
-    print(remove_from_list_all_negative_numbers([1, -2, 3, -3, -4, 7, 9, 10, -13]))
