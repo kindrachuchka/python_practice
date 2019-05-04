@@ -16,10 +16,7 @@ def is_two_object_has_same_value(first: Any, second: Any) -> bool:
     If @first and @second has same value should return True
     In another case should return False
     """
-    if first == second:
-        return True
-    else:
-        return False
+    return first == second
 
 
 def is_two_objects_has_same_type(first: Any, second: Any) -> bool:
@@ -27,10 +24,7 @@ def is_two_objects_has_same_type(first: Any, second: Any) -> bool:
     If @first and @second has same type should return True
     In another case should return False
     """
-    if type(first) == type(second):
-        return True
-    else:
-        return False
+    return type(first) == type(second)
 
 
 def is_two_objects_is_the_same_objects(first: Any, second: Any) -> bool:
@@ -38,10 +32,7 @@ def is_two_objects_is_the_same_objects(first: Any, second: Any) -> bool:
     If @first and @second has same type should return True
     In another case should return False
     """
-    if first is second:
-        return True
-    else:
-        return False
+    return first is second
 
 
 def multiple_ints(first_value: int, second_value: int) -> int:
@@ -114,10 +105,7 @@ def is_word_in_text(word: str, text: str) -> bool:
         >>> False
 
     """
-    if word in text:
-        return True
-    else:
-        return False
+    return word in text
 
 
 def some_loop_exercise() -> list:
@@ -126,7 +114,7 @@ def some_loop_exercise() -> list:
     """
     my_list = []
     for i in range(11):
-        if i != 6 or 7:
+        if i != 6 or i != 7:
             my_list.append(i)
             return my_list
 
@@ -140,12 +128,9 @@ def remove_from_list_all_negative_numbers(data: List[int]) -> list:
         remove_from_list_all_negative_numbers([1, 5, -7, 8, -1])
         >>> [1, 5, 8]
     """
-    positive_list = []
     for i in data:
         if i < 0:
             data.remove(i)
-        else:
-            positive_list.append(i)
     return data
 
 
@@ -173,7 +158,5 @@ def simple_sort(data: List[int]) -> List[list]:
     value = None
     for i in range(data):
         if data[i] > data[i+1]:
-            value = data[i]
-            data[i] = data[i+1]
-            data[i+1] = value
+            data[i], data[i+1] = data[i+1], data[i]
     return data
