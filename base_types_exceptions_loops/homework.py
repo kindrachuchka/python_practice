@@ -86,7 +86,7 @@ def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
         new_int = int(first_value)*int(second_value)
         return new_int
     except ValueError:
-        print("This is an ValueError")
+        raise ValueError
 
 
 def is_word_in_text(word: str, text: str) -> bool:
@@ -128,10 +128,11 @@ def remove_from_list_all_negative_numbers(data: List[int]) -> list:
         remove_from_list_all_negative_numbers([1, 5, -7, 8, -1])
         >>> [1, 5, 8]
     """
+    new_list = []
     for i in data:
-        if i < 0:
-            data.remove(i)
-    return data
+        if i >= 0:
+            new_list.append(i)
+    return new_list
 
 
 def alphabet() -> dict:
@@ -142,7 +143,7 @@ def alphabet() -> dict:
         alphabet()
         >>> {"a": 1, "b": 2 ...}
     """
-    d = dict.fromkeys(string.ascii_lowercase, 0)
+    d = dict.fromkeys(string.ascii_lowercase, 1)
     return d
 
 
@@ -155,8 +156,12 @@ def simple_sort(data: List[int]) -> List[list]:
     Returns:
 
     """
-    value = None
-    for i in range(data):
-        if data[i] > data[i+1]:
-            data[i], data[i+1] = data[i+1], data[i]
+    for i in range(len(data)):
+        for j in range(i + 1, len(data)):
+            if data[i] > data[j]:
+                data[i], data[j] = data[j], data[i]
     return data
+
+
+if __name__ == "__main__":
+    print(remove_from_list_all_negative_numbers([1, -2, 3, -3, -4, 7, 9, 10, -13]))
